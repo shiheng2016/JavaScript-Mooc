@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分块运动-左上到右下</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            position: relative;
+            width: 700px;
+            height: 400px;
+            margin: 50px auto;
+        }
+
+        span {
+            opacity: 0;
+            position: absolute;
+            width: 70px;
+            height: 100px;
+            background-image: url(images/1.jpg);
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <img src="images/0.jpg" width="700" height="400">
+</div>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    var W = 700;
+    var H = 500;
+    var cols = 10;
+    var rows = 5;
+    var nW = W / cols;
+    var nH = H / rows;
+    var oImg = $('img');
+    var aImgPath = [
+        'images/0.jpg',
+        'images/1.jpg',
+        'images/2.jpg'
+    ];
+    //当前页数
+    var num = 0;
+    //当前是否被允许next
+    var allowNext = true;
+    //添加span
+    for (var i = 0; i < rows; i++) {
+        for (var j = 0; j < cols; j++) {
+            var nTop = i * nH;
+            var nLeft = j * nW;
+            var oSpan = $('<span></span>');
+            oSpan.css({
+                left: nLeft + 'px',
+                top: nTop + 'px',
+                width: nW + 'px',
+                height: nH + 'px',
+                'background-position': (-nLeft) + 'px -' + (nTop) + 'px'
+            }).attr({
+                'data-r': i,
+                'data-c': j,
+                'data-index': i * cols + j
+            });
+            oSpan.appendTo('div');
+        }
+    }
+
+    //点击时刷新
+    $(document).click(function () {
+        if (!allowNext) {
+            console.log('not allow');
+            return;
+        }
+        allowNext = false;
+        var aSpan = $('span');
+        num++;
+        aSpan.each(function (index) {
+            var oSpan = $(this);
+            var r = parseInt(oSpan.attr('data-r'));
+            var c = parseInt(oSpan.attr('data-c'));
+            setTimeout(function () {
+                oSpan.stop().animate({
+                    opacity: 1
+                }, {
+                    complete: function () {
+                        if (oSpan.attr('data-index') == aSpan.length - 1) {
+                            console.log('end');
+                            oImg.attr('src', aImgPath[num % aImgPath.length])
+                            aSpan.css({
+                                opacity: 0,
+                                'background-image': 'url(' + aImgPath[(num + 1) % aImgPath.length] + ')'
+                            });
+                            allowNext = true;
+                        }
+
+                    }
+                });
+            }, 200 * (r + c));
+        });
+    });
+</script>
+</body>
+</html>

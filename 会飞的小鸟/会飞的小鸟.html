@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>会飞的小鸟@石小墨</title>
+    <link href="css/demo.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="dbird"><img src="img/bird.gif"></div>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script>
+        //只有页面加载完毕之后，才能找对象，只有找到对象之后，才能对对象
+        //执行相应的事件
+        var speed = 20;//按下鍵盤的時候，小鳥移动的距离
+        $(function () {//页面加载完毕之后
+            var dwidth=$(window).width();//浏览器的宽度
+            var dheight=$(window).height();//浏览器的高度
+            var birdWidth=$("#dbird").width();//小鸟的宽度
+            var birdHeight=$("#dbird").height();//小鸟的高度
+            var off = $("#dbird").offset();//获取到小鸟的方位对象
+            var key=39;
+            $(document).keydown(function (e) {
+                var keyCode = e.keyCode;
+                if(keyCode!=key){
+                   $("#dbird").removeClass().addClass("direction-"+keyCode);
+                   key=keyCode;
+                }
+                switch (keyCode) {
+                    case 37://左
+                        off.left -= speed;//startLeft=startLeft-speed
+                        if(off.left<=-birdWidth){
+                            off.left=dwidth;
+                        }
+                        break;
+                    case 38://上
+                        off.top -= speed;
+                        if(off.top<=-birdHeight){
+                            off.top=dheight;
+                        }
+                        break;
+                    case 39://右
+                        off.left += speed;
+                        if(off.left>=dwidth)
+                        {
+                            off.left=-birdWidth;
+                        }
+                        break;
+                    case 40://下
+                        off.top += speed;
+                        if(off.top>=dheight){
+                            off.top=-birdHeight;
+                        }
+                        break;
+                }
+                $("#dbird").offset(off);//更新小鸟的方位
+            });
+        });
+    </script>
+</body>
+
+</html>

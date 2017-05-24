@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>百度首页登录效果@石小墨</title>
+    <link href="css/demo.css" rel="stylesheet" />  
+</head>
+<body>
+    <div id="header">
+        <div id="head-con">
+            <div id="dcbg"><a href="javascript:;">换皮肤</a></div>
+            <div id="dreg"><a href="javascript:;">注册</a></div>
+            <div id="dexit"><a href="javascript:;" onclick="Exit()">退出</a></div>
+            <div id="duser"></div>
+            <div id="dlogin"><a href="javascript:;" onclick="ShowLoginBox()">登录</a></div>
+        </div>
+    </div>
+    <div id="picbg">
+        <div id="bg-top">
+            <div id="top-con">
+                <div id="dup"><a href="javascript:;">收起</a></div>
+            </div>
+        </div>
+        <div id="piclist">
+            <div class="pic"><img src="img/bg0.jpg" /></div>
+            <div class="pic"><img src="img/bg1.jpg" /></div>
+            <div class="pic"><img src="img/bg2.jpg" /></div>
+            <div class="pic"><img src="img/bg3.jpg" /></div>
+            <div class="pic"><img src="img/bg4.jpg" /></div>
+            <div class="pic"><img src="img/bg5.jpg" /></div>
+        </div>
+    </div>
+    <div id="dloginbox">
+        <div class="boxitem"><input type="text" id="txtUserName" placeholder="请输入用户名" /></div>
+        <div class="boxitem"><input type="password" id="txtPwd" placeholder="请输入密码" /></div>
+        <div class="boxitem" id="btnlogin"><a href="javascript:;" onclick="Login()">登录</a></div>
+    </div>
+
+    <div id="mainboy">
+        <div id="logo"><img src="img/logo.png" /></div>
+        <div id="search-con">
+            <div id="dtxt"><input type="text" id="txtTitle" /></div>
+            <div id="camera"></div>
+            <div id="search"><a href="javascript:;">百度一下</a></div>
+        </div>
+        <div id="con"></div>
+    </div>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="layer/layer.js"></script>
+    <script src="js/demo.js"></script>
+</body>
+</html>

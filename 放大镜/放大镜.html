@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大镜@石小墨</title>
+    <style>
+        * { margin: 0; padding: 0; }
+        div { position: absolute; top: 50px; width: 400px; height: 400px; }
+        #div1 { left: 50px; }
+        #div1 span { display: none; position: absolute; top: 0; left: 0; width: 200px; height: 200px; background-color: yellow; opacity: .5; }
+        #div2 { display: none; left: 500px; background:url(images/big.jpg) no-repeat -20px -30px; }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <img src="images/small.jpg" id="img1">
+        <span id="span1"></span>
+    </div>
+    <div id="div2"></div>
+
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script>
+        var oDiv1=$('#div1');
+        var oDiv2=$('#div2');
+        var oSpan=$('#span1');
+
+//        var nMaxLeft=0;
+//        var nMaxTop=0;
+
+
+        oDiv1.hover(function () {
+            oDiv2.show();
+            oSpan.show();
+            nMaxLeft=oDiv1[0].offsetWidth-oSpan[0].offsetWidth;
+            nMaxTop=oDiv1[0].offsetHeight-oSpan[0].offsetHeight;
+            nMaxImgLeft=800-oDiv2[0].offsetWidth;
+            nMaxImgTop=800-oDiv2[0].offsetHeight;
+        },function () {
+            oDiv2.hide();
+            oSpan.hide();
+        });
+
+        oDiv1.mousemove(function (ev) {
+            var left = ev.clientX - oDiv1[0].offsetLeft - oSpan[0].offsetWidth/2;
+            var top = ev.clientY - oDiv1[0].offsetTop - oSpan[0].offsetHeight/2;
+            if(left<0){
+                left=0;
+            }else if(left>=nMaxLeft){
+                left=nMaxLeft;
+            }
+
+            if(top<0){
+                top=0;
+            }else if(top>=nMaxTop){
+                top=nMaxTop;
+            }
+            oSpan.css({
+                top:top+'px',
+                left:left+'px'
+            });
+
+            var x=-left/nMaxLeft*nMaxImgLeft;
+            var y=-top/nMaxTop*nMaxImgTop;
+            console.log(x+','+y);
+            oDiv2.css('background-position',x+'px '+y+'px');
+        });
+    </script>
+</body>
+</html>

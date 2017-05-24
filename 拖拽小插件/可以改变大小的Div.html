@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>拖拽改变大小的DIV @shiweiping.com
+    </title>
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    #div1 {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        /*resize: both;*/
+        /*overflow: auto;*/
+        background: blue;
+    }
+    
+    #div2 {
+        position: absolute;
+        left: 150px;
+        top: 150px;
+        width: 50px;
+        height: 50px;
+        background: red;
+        cursor: move;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var oDiv1 = document.getElementById('div1');
+        var oDiv2 = document.getElementById('div2');
+        var left = 0;
+        var top = 0;
+
+        oDiv2.onmousedown = function(ev) {
+
+            var oEvent = ev || event;
+            var oDiv2Left = oDiv2.offsetLeft;
+            var oDiv2Top = oDiv2.offsetTop;
+            //在子级进行取消冒泡
+            oEvent.cancelBubble = true;
+            //开始移动
+            left = oEvent.clientX;
+            top = oEvent.clientY;
+            document.onmousemove = function(ev) {
+                var oEvent = ev || event;
+                //获取鼠标移动的距离
+                var disMouseLeft = oEvent.clientX - left;
+                var disMouseTop = oEvent.clientY - top;
+                oDiv2.style.left = disMouseLeft + oDiv2Left + 'px';
+                oDiv2.style.top = disMouseTop + oDiv2Top + 'px';
+                oDiv1.style.width = oDiv2.offsetLeft + 50 + 'px';
+                oDiv1.style.height = oDiv2.offsetTop + 50 + 'px';
+            };
+            document.onmouseup = function() {
+                document.onmousemove = null;
+            };
+        };
+    }
+    </script>
+</head>
+
+<body>
+    <div id="div1">
+        <div id="div2"></div>
+    </div>
+</body>
+
+</html>

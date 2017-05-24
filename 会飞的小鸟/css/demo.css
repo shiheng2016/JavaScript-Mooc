@@ -1,0 +1,23 @@
+*
+{
+    padding: 0px;
+    margin: 0px;
+}
+#dbird
+{
+    width: 206px;
+    height: 121px;
+    position: absolute;/*設置了定位之後，才能設置left，top，從而確定小鳥的方位*/
+}
+body{
+    overflow: hidden;
+}
+.direction-37 {
+    transform: rotateY(180deg);
+}
+.direction-38 {
+    transform: rotate(-60deg);
+}
+.direction-40 {
+    transform: rotate(60deg);
+}

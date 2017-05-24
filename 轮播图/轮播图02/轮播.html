@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>无缝轮播</title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.banner {
+				width: 1000px;
+				height: 450px;
+				margin: 100px auto;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.banner .img {
+				width: 10000px;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+			
+			.banner .img img {
+				width: 1000px;
+				height: 450px;
+			}
+			
+			.banner .img li {
+				float: left;
+				list-style-type: none;
+			}
+			
+			.banner .num {
+				position: absolute;
+				width: 100%;
+				bottom: 10px;
+				left: 0px;
+				text-align: center;
+				font-size: 0px;
+			}
+			
+			.banner .num li {
+				width: 10px;
+				height: 10px;
+				background-color: #888;
+				border-radius: 50%;
+				display: inline-block;
+				margin: 0px 3px;
+				cursor: pointer;
+			}
+			
+			.banner .num li.on {
+				background-color: #f60;
+			}
+			
+			.banner .btn {
+				width: 30px;
+				height: 50px;
+				background: rgba(0, 0, 0, 0.5);
+				position: absolute;
+				top: 50%;
+				margin-top: -25px;
+				font-size: 40px;
+				line-height: 50px;
+				cursor: pointer;
+				text-align: center;
+				color: #FFFFFF;
+				font-family: "微软雅黑";
+				display: none;
+			}
+			
+			.banner .btn_l {
+				left: 0px;
+			}
+			
+			.banner .btn_r {
+				right: 0px;
+			}
+			
+			.banner:hover .btn {
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="banner">
+			<ul class="img">
+				<li><a href="#"><img src="images/1.jpg"/></a></li>
+				<li><a href="#"><img src="images/2.jpg"/></a></li>
+				<li><a href="#"><img src="images/3.jpg"/></a></li>
+				<li><a href="#"><img src="images/4.jpg"/></a></li>
+				<li><a href="#"><img src="images/5.jpg"/></a></li>
+			</ul>
+
+			<ul class="num">
+			</ul>
+
+			<div class="btn btn_l">&lt;</div>
+			<div class="btn btn_r">&gt;</div>
+		</div>
+		<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var i = 0;
+				var clone = $(".banner .img li").first().clone();
+				$(".banner .img").append(clone);
+				//添加小圆点
+				var size = $(".banner .img li").size();
+				for(var j = 0; j < size - 1; j++) {
+					$(".banner .num").append("<li></li>");
+				}
+				$(".banner .num li").first().addClass("on");
+
+				//鼠标滑入圆点
+				$(".banner .num li").hover(function() {
+					var index = $(this).index();
+					i = index;
+
+					$(".banner .img").stop().animate({
+						left: -index * 1000
+					}, 1000);
+					$(this).addClass("on").siblings().removeClass("on");
+
+				});
+				//自动轮播
+				var t = setInterval(moveR, 3000);
+
+				//对banner定时器操作
+
+				$(".banner").hover(function() {
+					clearInterval(t);
+				}, function() {
+					t = setInterval(moveR, 3000);
+				});
+
+				//向右按钮
+				$(".banner .btn_r").click(function() {
+					moveR();
+				});
+				//向左按钮
+				$(".banner .btn_l").click(function() {
+					moveL();
+				});
+
+				function moveR() {
+					i++;
+					if(i == size) {
+						i = 1;
+						$(".banner .img").css("left", "0px");
+					}
+					$(".banner .img").stop().animate({
+						left: -i * 1000
+					}, 500);
+					if(i == size - 1) {
+						$(".banner .num li").eq(0).addClass("on").siblings().removeClass("on");
+					} else {
+						$(".banner .num li").eq(i).addClass("on").siblings().removeClass("on");
+					}
+				}
+
+				function moveL() {
+					i--;
+					if(i == -1) {
+						i = size - 2;
+						$(".banner .img").css("left", -(size - 1) * 1000);
+					}
+
+					$(".banner .img").stop().animate({
+						left: -i * 1000
+					}, 500);
+					$(".banner .num li").eq(i).addClass("on").siblings().removeClass("on");
+				}
+			});
+		</script>
+	</body>
+
+</html>

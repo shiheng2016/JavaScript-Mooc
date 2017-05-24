@@ -1,0 +1,60 @@
+*
+{
+    padding: 0px;
+    margin: 0px;
+    font-family: "微软雅黑";
+}
+#dlunbo
+{
+    width: 900px;
+    height: 300px;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+.ig
+{
+    position: absolute;
+}
+#tags{
+    position: absolute;
+    top: 275px;
+    left: 390px;
+    
+}
+.tag
+{
+    width:16px;
+    height: 16px;
+    border:solid 2px #fff;
+    float: left;
+    margin-right: 8px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.btn
+{
+    width: 30px;
+    height: 50px;
+    position: absolute;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 32px;
+    top: 50%;
+    margin-top:-25px;
+    cursor: pointer;
+}
+.btn1
+{
+    left:0px;
+}
+.btn2
+{
+    right:0px;
+}
+.bg
+{
+    background-color: #f00;
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开关</title>
+    <style>
+        html{
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        input[type='checkbox']{
+            display: none;
+        }
+
+
+        .toggle-btn1{
+            display: block;
+            width:60px;
+            height: 30px;
+            border-radius: 30px;
+            background-color: #aed69f;
+            position: relative;
+            transition: background-color .3s ease-in-out 0s;
+        }
+
+        .toggle-btn1 .white-dot{
+            transform: translate(30px,1px);
+            /*position: absolute;*/
+            /*right: 2px;*/
+            /*top: 1px;*/
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: #ffffff;
+
+            transition: transform .3s ease-in-out 0s;
+        }
+
+
+        #toggle-button1:checked+.toggle-btn1{
+            background-color: #f0f0f0;
+        }
+        #toggle-button1:checked+.toggle-btn1 .white-dot{
+            /*left: 2px;*/
+            transform: translate(2px,1px);
+        }
+
+
+        .toggle-btn2{
+            box-sizing: border-box;
+            display: block;
+            width:60px;
+            height: 30px;
+            border-radius: 30px;
+            background-color: #93d986;
+            transition: background-color .3s ease-in-out 0s;
+            position: relative;
+        }
+        .toggle-btn2 .white-dot{
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            transform: translate(30px,1px);
+            transition: transform .3s ease-in-out 0s;
+            background-color: #ffffff;
+        }
+        #toggle-button2:checked+.toggle-btn2{
+            background-color: #ffffff;
+            box-shadow: inset 0 0 0 1px gray;
+        }
+        #toggle-button2:checked+.toggle-btn2 .white-dot{
+            box-shadow: 0px 1px 8px gray;
+            transform: translate(2px,1px);
+        }
+
+
+        .toggle-btn3{
+            display: block;
+            width:60px;
+            height: 30px;
+            background-color: #93d986;
+            position: relative;
+            transform: skew(-20deg);
+            transition: background-color .3s ease-in 0s;
+        }
+        .toggle-btn3::before{
+            content: 'ON';
+            transition: content 1s ease-in 0s;
+            color: #fff;
+            position: absolute;
+            width: 24px;
+            height: 12px;
+            text-align: center;
+            left: 50%;
+            top: 50%;
+            margin-left: -12px;
+            margin-top: -6px;
+            font-size: 12px;
+        }
+
+        #toggle-button3:checked+.toggle-btn3{
+            background-color: gray;
+        }
+        #toggle-button3:checked+.toggle-btn3::before{
+            content: 'OFF';
+        }
+
+        .toggle-btn4{
+            display: block;
+            width:60px;
+            height: 30px;
+            border-radius: 30px;
+            background-color: #fff;
+            border: 4px solid #a6c67f;
+            transition: border .3s ease-in-out 0s;
+            position: relative;
+            box-sizing: border-box;
+        }
+        .toggle-btn4 .white-dot{
+            width: 25px;
+            height: 20px;
+            border-radius: 20px;
+            /*position: absolute;*/
+            /*right: 2px;*/
+            /*top: 1px;*/
+            transform: translate(26px,1px);
+            transition: transform .3s ease-in-out 0s;
+            background-color: #a6c67f;
+        }
+
+        #toggle-button4:checked+.toggle-btn4{
+            border-color: #CECECE;
+        }
+        #toggle-button4:checked+.toggle-btn4 .white-dot{
+            background-color: #CECECE;
+            left: 2px;
+            transform: translate(2px,1px);
+        }
+
+        .toggle-btn5{
+            display: block;
+            width:60px;
+            height: 30px;
+            background-color: #a6c67f;
+            transition: background-color .3s ease-in-out 0s;
+            position: relative;
+            box-sizing: border-box;
+            border-radius: 4px;
+        }
+        .toggle-btn5::before{
+            content: 'Yeah!';
+            color: #fff;
+            position: absolute;
+            width: 24px;
+            height: 12px;
+            text-align: center;
+            left: 50%;
+            top: 50%;
+            margin-left: -15px;
+            margin-top: -6px;
+            font-size: 12px;
+            line-height: 1;
+        }
+
+        #toggle-button5:checked+.toggle-btn5{
+            background-color: red;
+        }
+        #toggle-button5:checked+.toggle-btn5::before{
+            content: 'Nope';
+        }
+    </style>
+</head>
+<body>
+    Light欢迎点我
+    <input type="checkbox" id="toggle-button1">
+    <label class="toggle-btn1" for="toggle-button1">
+        <div class="white-dot"></div>
+    </label>
+
+    <hr>
+
+    IOS欢迎点我
+    <input type="checkbox" id="toggle-button2">
+    <label class="toggle-btn2" for="toggle-button2">
+        <div class="white-dot"></div>
+    </label>
+
+    <hr>
+
+    Skewed欢迎点我
+    <input type="checkbox" id="toggle-button3">
+    <label class="toggle-btn3" for="toggle-button3">
+    </label>
+
+    <hr>
+
+    Flat欢迎点我
+    <input type="checkbox" id="toggle-button4">
+    <label class="toggle-btn4" for="toggle-button4">
+        <div class="white-dot"></div>
+    </label>
+
+    <hr>
+
+    Flip欢迎点我
+    <input type="checkbox" id="toggle-button5">
+    <label class="toggle-btn5" for="toggle-button5">
+        <div class="white-dot"></div>
+    </label>
+</body>
+</html>

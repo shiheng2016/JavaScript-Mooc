@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        table{
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin: 10px auto;
+        }
+
+        table,th,td{
+            border: 0.5px solid #333;
+        }
+
+        th{
+            background-color: #ccc;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        th,td{
+            padding: 4px 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <table class="j-tb">
+        <tbody>
+            <tr>
+                <th class="name">姓名</th>
+                <th class="age" data-sort="true">年龄</th>
+                <th class="sex">性别</th>
+                <th class="score" data-sort="true">成绩</th>
+            </tr>
+            <tr>
+                <td>aaa</td>
+                <td>11</td>
+                <td>男</td>
+                <td>90</td>
+            </tr>
+            <tr>
+                <td>bbb</td>
+                <td>12</td>
+                <td>男</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>ccc</td>
+                <td>11</td>
+                <td>男</td>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td>ddd</td>
+                <td>19</td>
+                <td>男</td>
+                <td>90</td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="js-tbsort-v.0.0.js"></script>
+    <script>
+        tbManage('j-tb');
+    </script>
+</body>
+</html>

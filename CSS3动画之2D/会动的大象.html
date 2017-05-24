@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html {
+            background-color: #91B568;
+        }
+        .move-elephant{
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            left: 0;
+            top: 50%;
+            margin-top: -250px;
+            display: inline-block;
+            animation: go-elephant 20s;
+        }
+        
+        @keyframes go-elephant {
+            0%{left: 0}
+            100%{left: 70%}
+        }
+        
+        .main, .shadow-main {
+            width: 380px;
+            height: 280px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 5;
+            margin-left: -190px;
+            margin-top: -140px;
+            border-radius: 583px 348px 277px 128px/332px 73px 369px 500px;
+            animation: main-move 1s infinite;
+            -webkit-animation: main-move 1s infinite; /* Safari 和 Chrome */
+            animation-direction: alternate;
+            -webkit-animation-direction: alternate;
+        }
+
+        .shadow-main {
+            z-index: 3;
+            border: 1px solid gray;
+            background-color: #B5B5B5;
+            animation: main-move2 1s infinite;
+            -webkit-animation: main-move2 1s infinite; /* Safari 和 Chrome */
+            animation-direction: alternate;
+            -webkit-animation-direction: alternate;
+        }
+
+        .tail {
+            position: absolute;
+            top: 0;
+            left: -66px;
+            top: 100px;
+            width: 160px;
+            height: 160px;
+            background-color: #B5B5B5;
+            border-radius: 50% 0 0 0;
+            border-left: 1px solid gray;
+            animation: move-tail 1s infinite alternate;
+            /*box-shadow: 1px 1px 0 1px red;*/
+            /*transform: rotate(-20deg);*/
+            /*box-shadow: 0px 0px 0 1px gray;*/
+        }
+
+        .tail::before {
+            content: '';
+            width: 160px;
+            height: 160px;
+            background-color: #91B568;
+            border-radius: 160px 0 0 0;
+            border-left: 1px solid gray;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        @keyframes move-tail {
+            0% {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+
+                -webkit-transform: rotate(8deg);
+                -moz-transform: rotate(8deg);
+                -ms-transform: rotate(8deg);
+                -o-transform: rotate(8deg);
+                transform: rotate(8deg);
+            }
+        }
+
+        .head {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background-color: #B5B5B5;
+            position: absolute;
+            right: -70px;
+            top: -50px;
+            border: 1px solid gray;
+            z-index: 5;
+            animation: head-move 1s infinite alternate;
+        }
+
+        @keyframes move-foot1 {
+            0% {
+                transform: rotate(5deg) translateY(0)
+            }
+            40% {
+                transform: rotate(-8deg) translateY(10%)
+            }
+            100% {
+                transform: rotate(5deg) translateY(0)
+            }
+        }
+
+        @keyframes move-foot2 {
+            0% {
+                -webkit-transform: rotate(-5deg);
+                -moz-transform: rotate(-5deg);
+                -ms-transform: rotate(-5deg);
+                -o-transform: rotate(-5deg);
+                transform: rotate(-5deg);
+            }
+
+            60% {
+                -webkit-transform: rotate(8deg) translateY(-10%);
+                -moz-transform: rotate(8deg) translateY(-10%);
+                -ms-transform: rotate(8deg) translateY(-10%);
+                -o-transform: rotate(8deg) translateY(-10%);
+                transform: rotate(8deg) translateY(-10%);
+            }
+
+            100% {
+                -webkit-transform: rotate(-5deg);
+                -moz-transform: rotate(-5deg);
+                -ms-transform: rotate(-5deg);
+                -o-transform: rotate(-5deg);
+                transform: rotate(-5deg);
+            }
+        }
+
+        @keyframes main-move {
+            0% {
+                transform: translateY(0);
+
+            }
+            100% {
+                transform: translateY(4px)
+            }
+        }
+
+        @keyframes main-move2 {
+            0% {
+                transform: translateY(0)
+            }
+            100% {
+                transform: translateY(4px)
+            }
+        }
+
+        @keyframes head-move {
+            0% {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(5deg);
+                -moz-transform: rotate(5deg);
+                -ms-transform: rotate(5deg);
+                -o-transform: rotate(5deg);
+                transform: rotate(5deg);
+            }
+
+        }
+
+        .foot1, .foot2, .foot4, .foot3 {
+            /*animation:gogogo 2s infinite;*/
+            /*-webkit-animation:gogogo 2s infinite; !* Safari 和 Chrome *!*/
+            /*animation-direction:alternate;*/
+            /*-webkit-animation-direction:alternate;*/
+            width: 60px;
+            height: 100px;
+            background-color: #B5B5B5;
+            position: absolute;
+            /*border-radius: 20px;*/
+            z-index: 5;
+
+        }
+
+        .foot1 {
+            left: 36px;
+            bottom: -60px;
+            transform: rotate(5deg);
+            animation: move-foot1 2s linear 0s infinite;
+            border-left: 1px solid gray;
+        }
+
+        .foot2 {
+            right: 60px;
+            bottom: -70px;
+            transform: rotate(-3deg);
+            height: 120px;
+            border-left: 1px solid gray;
+            animation: move-foot2 2s linear 0s infinite;
+        }
+
+        .foot3 {
+            right: 27px;
+            bottom: -51px;
+            transform: rotate(2deg);
+            background-color: #9F9F9F;
+            z-index: -1;
+            animation: move-foot1 2s linear 0s infinite;
+        }
+
+        .foot3 .foot-step {
+            background-color: #9F9F9F;
+        }
+
+        .foot4 {
+            left: 79px;
+            bottom: -69px;
+            background-color: #9F9F9F;
+            z-index: -1;
+            animation: move-foot2 2s linear 0s infinite;
+        }
+
+        .foot4 .foot-step {
+            background-color: #9F9F9F;
+        }
+
+        .foot-step {
+            width: 70px;
+            height: 40px;
+            background-color: #B5B5B5;
+            border-radius: 50px 50px 30px 30px;
+            position: absolute;
+            bottom: -5px;
+            left: -5px;
+            overflow: hidden;
+            /*box-shadow: 0 0 30px #B5B5B5;*/
+            box-shadow: 0px 40px 10px -5px grey;
+        }
+
+        .foot-dot {
+            display: inline-block;
+            width: 18px;
+            height: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            position: absolute;
+        }
+
+        .dot1 {
+            bottom: -10px;
+            right: 15px;
+        }
+
+        .dot2 {
+            bottom: -10px;
+            right: -10px;
+        }
+
+        .ear {
+            width: 100px;
+            height: 160px;
+            border: 1px solid gray;
+            border-right: 1px solid transparent;
+            border-radius: 100px 0 0 32px/100px 0 0 50px;
+            position: absolute;
+            top: 30px;
+            left: -45px;
+            transform: rotate(-6deg);
+            background-color: #B5B5B5;
+        }
+
+        .eye-wrapper {
+            width: 80px;
+            height: 20px;
+            border: 1px solid gray;
+            border-radius: 20px;
+            position: absolute;
+            right: 5px;
+            top: 25%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .eye-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #ffffff;
+        }
+
+        .nose {
+            width: 30px;
+            height: 222px;
+            border-radius: 5px 50px 0 0 / 5px 150px 0 0;
+            border-top: 1px solid dimgrey;
+            position: absolute;
+            z-index: 10;
+            right: 20px;
+            top: 30%;
+            background-color: #B5B5B5;
+            animation: move-nose 1s infinite alternate;
+        }
+
+        @keyframes move-nose {
+            0% {
+                height: 90%;
+                -webkit-transform: rotate(-2deg);
+                -moz-transform: rotate(-2deg);
+                -ms-transform: rotate(-2deg);
+                -o-transform: rotate(-2deg);
+                transform: rotate(-2deg);
+            }
+            100% {
+                height: 100%;
+                -webkit-transform: rotate(2deg);
+                -moz-transform: rotate(2deg);
+                -ms-transform: rotate(2deg);
+                -o-transform: rotate(2deg);
+                transform: rotate(2deg);
+            }
+        }
+
+        .nose-step {
+            width: 50px;
+            height: 20px;
+            border-radius: 10px;
+            background-color: #a5a5a5;
+            position: absolute;
+            bottom: -20px;
+            left: -10px;
+            border-bottom: 1px solid gray;
+            border-left: 1px solid gray;
+        }
+
+        .mouth {
+            width: 33px;
+            height: 20px;
+            border-left: 2px solid gray;
+            border-bottom: 2px solid gray;
+            transform: rotate(-20deg);
+            border-radius: 5px 0 5px 18px;
+            position: absolute;
+            bottom: -3px;
+            left: 52%;
+            z-index: 100;
+            background-color: #B5B5B5;
+        }
+
+        .teeth {
+            width: 45px;
+            height: 35px;
+            background-color: #fff;
+            border-radius: 0 0 31px 70px/0 0 11px 35px;
+            position: absolute;
+            z-index: -111;
+            left: 16px;
+            top: 1px;
+            border-bottom: 2px solid gray;
+        }
+
+        .teeth::after {
+            content: '';
+            display: block;
+            width: 35px;
+            height: 30px;
+            border-radius: 0 0 0 30px;
+            background-color: #B5B5B5;
+            position: absolute;
+            z-index: -111;
+            left: 10px;
+            box-shadow: 0 0 0 1px #B5B5B5;
+        }
+
+        .heart {
+            width: 16px;
+            height: 20px;
+            position: absolute;
+            z-index: 10;
+        }
+
+        .heart1{
+            left: 12px;
+            top: 4px;
+            animation: move-heart 1s infinite alternate;
+        }
+
+        .heart2{
+            right: 12px;
+            top: 4px;
+            animation: move-heart 1s infinite alternate;
+        }
+        
+        @keyframes move-heart {
+            0%{
+                -webkit-transform: scale(0);
+                -moz-transform: scale(0);
+                -ms-transform: scale(0);
+                -o-transform: scale(0);
+                transform: scale(0);
+            }
+            100%{
+                -webkit-transform: scale(3);
+                -moz-transform: scale(3);
+                -ms-transform: scale(3);
+                -o-transform: scale(3);
+                transform: scale(3);
+            }
+        }
+
+        .heart:before {
+            content: " ";
+            border: 0 solid transparent;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px 10px 0 0;
+            width: 8px;
+            height: 12px;
+            background: red;
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+
+            position: absolute;
+            left: 2px;
+        }
+
+        .heart:after {
+            content: " ";
+            border: 0 solid transparent;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px 10px 0 0;
+            width: 8px;
+            height: 12px;
+            background: red;
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            position: absolute;
+            left: 4.8px;
+            top: 0px;
+        }
+
+        .MrWang{
+            position: fixed;
+            right: 0;
+            top: 50%;
+            margin-top: -100px;
+            width: 400px;
+            height: 200px;
+            transform: rotateY(70deg);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="move-elephant">
+    <div class="main">
+        <div class="tail"></div>
+        <div class="head">
+
+            <div class="ear"></div>
+            <div class="eye-wrapper">
+                <div class="eye-dot"></div>
+                <div class="eye-dot"></div>
+                <div class="heart heart1"></div>
+                <div class="heart heart2"></div>
+            </div>
+            <div class="nose">
+                <div class="nose-step"></div>
+            </div>
+            <div class="mouth">
+                <div class="teeth"></div>
+            </div>
+            <div class="mouth">
+
+            </div>
+        </div>
+        <div class="foot1">
+            <div class="foot-step">
+                <div class="foot-dot dot1"></div>
+                <div class="foot-dot dot2"></div>
+            </div>
+
+        </div>
+        <div class="foot2">
+            <div class="foot-step">
+                <div class="foot-dot dot1"></div>
+                <div class="foot-dot dot2"></div>
+            </div>
+        </div>
+        <div class="foot3">
+            <div class="foot-step">
+                <div class="foot-dot dot1"></div>
+                <div class="foot-dot dot2"></div>
+            </div>
+        </div>
+        <div class="foot4">
+            <div class="foot-step">
+                <div class="foot-dot dot1"></div>
+                <div class="foot-dot dot2"></div>
+            </div>
+        </div>
+        <div class="shadow-main"></div>
+
+    </div>
+
+</div>
+<img src="MrWang.jpg" alt="" class="MrWang">
+
+</body>
+</html>

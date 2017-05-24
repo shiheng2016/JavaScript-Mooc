@@ -1,0 +1,175 @@
+﻿* {
+    padding: 0px;
+    margin: 0px;
+    font-family: "微软雅黑";
+}
+
+body {
+}
+
+a {
+    text-decoration: none;
+}
+
+#header {
+    width: 100%;
+    height: 36px;
+    background-color: #000000;
+}
+
+#head-con {
+    width: 800px;
+    height: 36px;
+    margin: 0px auto;
+    line-height: 36px;
+}
+
+    #head-con a {
+        color: #fff;
+    }
+
+#dcbg {
+    float: left;
+}
+
+
+
+#dreg, #dlogin, #dexit, #duser {
+    float: right;
+    margin-left: 10px;
+}
+
+.pic img {
+    width: 100px;
+}
+
+.pic {
+    float: left;
+    margin-right: 10px;
+}
+
+#picbg {
+    width: 100%;
+    height: 150px;
+    background-color: #fff;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: none;
+}
+
+#bg-top {
+    height: 36px;
+    width: 100%;
+    border-bottom: solid 1px #ccc;
+    line-height: 36px;
+}
+
+#top-con {
+    width: 800px;
+    margin: 0px auto;
+}
+
+#dup {
+    float: right;
+}
+
+#piclist {
+    width: 800px;
+    margin: 20px auto;
+}
+
+.boxitem input {
+    width: 350px;
+    height: 40px;
+}
+
+#btnlogin a {
+    width: 352px;
+    height: 44px;
+    background-color: #117c86;
+    color: #fff;
+    display: block;
+    text-align: center;
+    line-height: 44px;
+    font-size: 20px;
+}
+
+.boxitem {
+    margin: 20px;
+}
+
+#dloginbox {
+    display: none;
+}
+
+#duser {
+    color: red;
+}
+
+#logo img {
+    width: 270px;
+}
+
+#mainboy {
+    width: 640px;
+    height: 350px;
+    margin: 0px auto;
+    margin-top: 90px;
+}
+
+#logo {
+    width: 270px;
+    height: 129px;
+    margin: 0px auto;
+}
+
+#search-con div {
+    float: left;
+}
+
+#dtxt input {
+    width: 540px;
+    height: 36px;
+}
+
+#search a {
+    width: 96px;
+    height: 38px;
+    background-color: #1c3dad;
+    display: block;
+    text-align: center;
+    line-height: 38px;
+    color: #fff;
+}
+
+#camera {
+    width: 18px;
+    height: 16px;
+    margin-left: -30px;
+    margin-top: 11px;
+    background-image: url("../img/camera.png");
+}
+
+    #camera:hover {
+        cursor: pointer;
+        background-position: 0px -20px;
+    }
+
+#con {
+    clear: both;
+    width: 541px;
+    border: solid 1px #ccc;
+    line-height: 30px;
+    border-top-width: 0px;
+    background-color: #fff;
+    display: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.bg {
+    background-color: #ccc;
+}

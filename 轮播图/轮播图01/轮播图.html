@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图@石小墨</title>
+    <link href="css/demo.css" rel="stylesheet" />
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        var i = 0;
+        var timer;
+        $(function () {
+            $(".ig").eq(0).show().siblings().hide();//第一张图片显示，其余的图片隐藏
+            StartLunbo();
+            $(".tag").hover(function () {
+                clearInterval(timer);//清除定时器
+                i = $(this).index();//获取到当前鼠标放上去的下标的索引
+                ShowPicTag();
+            }, function () {
+                StartLunbo();
+            });
+
+            $(".btn1").click(function () {
+                clearInterval(timer);//清除定时器
+                i--;
+                if (i == -1) {
+                    i = 4;
+                }
+                ShowPicTag();
+                StartLunbo();
+            });
+            $(".btn2").click(function () {
+                clearInterval(timer);//清除定时器
+                i++;
+                if (i == 5) {
+                    i = 0;
+                }
+                ShowPicTag();
+                StartLunbo();
+            });
+        });
+        function ShowPicTag() {
+            $(".ig").eq(i).stop(true,true).fadeIn(300).siblings().stop(true,true).fadeOut(300);
+            $(".tag").eq(i).stop(true,true).addClass("bg").siblings().stop(true,true).removeClass("bg");
+        }
+        function StartLunbo() {
+            timer = setInterval(function () {
+                i++;//自增1
+                if (i == 5) {
+                    i = 0;
+                }
+                ShowPicTag();
+            }, 4000);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="dlunbo">
+        <div id="igs">
+            <div class="ig"><img src="img/1.jpg"></div>
+            <div class="ig"><img src="img/2.jpg"></div>
+            <div class="ig"><img src="img/3.jpg"></div>
+            <div class="ig"><img src="img/4.jpg"></div>
+            <div class="ig"><img src="img/5.jpg"></div>
+        </div>
+        <div id="tags">
+            <div class="tag bg"></div>
+            <div class="tag"></div>
+            <div class="tag"></div>
+            <div class="tag"></div>
+            <div class="tag"></div>
+        </div>
+        <div class="btn btn1">&lt;</div>
+        <div class="btn btn2">&gt;</div>
+    </div>
+</body>
+
+</html>

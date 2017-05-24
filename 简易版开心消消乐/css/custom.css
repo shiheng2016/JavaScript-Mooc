@@ -1,0 +1,4 @@
+/*设置经过的时间的背景样式灰色*/
+.progress-bar-used {
+  background-color: #888888;
+}

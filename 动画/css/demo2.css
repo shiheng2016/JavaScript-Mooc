@@ -1,0 +1,25 @@
+﻿* {
+    padding: 0px;
+    margin: 0px;
+}
+
+#d1 {
+    position: absolute;
+    top: 80px;
+    left: 150px;
+    animation: donghua 4s infinite ease-in;
+}
+
+@keyframes donghua {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    40% {
+        transform: rotateY(250deg);
+    }
+
+    100% {
+        transform: rotateY(360deg);
+    }
+}

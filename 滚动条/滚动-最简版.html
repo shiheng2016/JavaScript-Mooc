@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>滚动最简版@石小墨</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    div {
+        overflow: hidden;
+        position: relative;
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+        margin: 50px auto;
+    }
+    
+    ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    
+    li {
+        list-style: none;
+        height: 26px;
+        line-height: 26px;
+        background-color: #eee;
+        margin: 2px;
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>aaaaaaaaaaaa</li>
+            <li>bbbbbbbbbbbb</li>
+            <li>cccccccccccc</li>
+            <li>dddddddddddd</li>
+            <li>ffffffffffff</li>
+            <li>gggggggggggg</li>
+            <li>eeeeeeeeeeee</li>
+            <li>nnnnnnnnnnnn</li>
+            <li>llllllllllll</li>
+            <li>pppppppppppp</li>
+        </ul>
+    </div>
+    <script>
+    var oDiv = document.querySelector('div');
+    var oUl = document.querySelector('ul');
+    oUl.innerHTML += oUl.innerHTML;
+    var nTop = 0;
+    var nMinTop = -(oUl.offsetHeight - oDiv.offsetHeight);
+    console.log(nMinTop);
+
+    var timer = setInterval(function() {
+        nTop -= 1;
+        if (nTop <= nMinTop) {
+            nTop = 0;
+        }
+        oUl.style.top = nTop + 'px';
+    }, 30);
+    </script>
+</body>
+
+</html>

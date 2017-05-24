@@ -1,0 +1,116 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+
+.container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 500px;
+    height: 500px;
+}
+
+.wrapper{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    animation:ball 5s linear infinite;
+    perspective: 3000px;
+    perspective-origin: 50% 50%;
+    transform-style: preserve-3d;
+    transform: rotateZ(-45deg);
+    border: 1px solid #fff;
+    border-radius: 50%;
+
+}
+.wrapper::after{
+    content: '';
+    display: block;
+    width: 1px;
+    height: 800px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(250px, -100px);
+
+}
+
+@keyframes ball {
+    0%{transform: rotateZ(45deg) rotateY(0deg) }
+    100%{transform: rotateZ(45deg) rotateY(360deg) }
+}
+
+
+/*@keyframes ball {*/
+    /*0% {*/
+        /*transform: rotateZ(-45deg) rotateY(0);*/
+    /*}*/
+    /*100% {*/
+        /*transform: rotateZ(-45deg) rotateY(360deg);*/
+    /*}*/
+/*}*/
+
+.wrapper>div{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #fff;
+    border-radius: 50%;
+}
+
+.div1{
+    border: 1px solid #fff;
+    -webkit-transform: rotateY(36deg);
+    -moz-transform: rotateY(36deg);
+    -ms-transform: rotateY(36deg);
+    -o-transform: rotateY(36deg);
+    transform: rotateY(36deg);
+}
+
+.div2{
+    border: 1px solid #fff;
+    -webkit-transform: rotateY(72deg);
+    -moz-transform: rotateY(72deg);
+    -ms-transform: rotateY(72deg);
+    -o-transform: rotateY(72deg);
+    transform: rotateY(72deg);
+}
+
+.div3{
+    border: 1px solid #fff;
+    -webkit-transform: rotateY(108deg);
+    -moz-transform: rotateY(108deg);
+    -ms-transform: rotateY(108deg);
+    -o-transform: rotateY(108deg);
+    transform: rotateY(108deg);
+}
+
+.div4{
+    border: 1px solid #fff;
+    -webkit-transform: rotateY(144deg);
+    -moz-transform: rotateY(144deg);
+    -ms-transform: rotateY(144deg);
+    -o-transform: rotateY(144deg);
+    transform: rotateY(144deg);
+}
+
+.div5{
+    border: 1px solid #fff;
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}

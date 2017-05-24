@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>半透明拖拽Div@shiweiping.com</title>
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    div {
+        position: absolute;
+        left: 100px;
+        top: 100px;
+        width: 100px;
+        height: 100px;
+        background: green;
+        color: #f1f1f1;
+        text-align: center;
+    }
+    
+    .div2 {
+        z-index: 1;
+        opacity: 0.5;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var oDiv = document.getElementById('div1');
+        document.onmousedown = function(ev) {
+            var oEvent = ev || event;
+
+            var oDiv1 = document.createElement('div');
+            oDiv1.innerHTML = '全栈web高级工程师';
+            oDiv1.className = 'div2';
+            document.body.appendChild(oDiv1);
+            var left = 100;
+            var top = 100;
+            var disLeft = oEvent.clientX - oDiv.offsetLeft;
+            var distop = oEvent.clientY - oDiv.offsetTop;
+            document.onmousemove = function(ev) {
+                var oEvent = ev || event;
+                left = oEvent.clientX - disLeft;
+                top = oEvent.clientY - distop;
+                if (left < 0) {
+                    left = 0;
+                } else if (left > document.documentElement.clientWidth - oDiv.offsetWidth) {
+                    left = document.documentElement.clientWidth - oDiv.offsetWidth;
+                }
+                if (top < 0) {
+                    top = 0;
+                } else if (top > document.documentElement.clientHeight - oDiv.offsetHeight) {
+                    top = document.documentElement.clientHeight - oDiv.offsetHeight
+                }
+                oDiv1.style.left = left + 'px';
+                oDiv1.style.top = top + 'px';
+            };
+            document.onmouseup = function() {
+                document.onmousemove = null;
+                oDiv.style.left = left + 'px';
+                oDiv.style.top = top + 'px';
+                document.body.removeChild(oDiv1);
+            };
+            return false;
+        };
+    }
+    </script>
+</head>
+
+<body>
+    <div id="div1">魔鬼程序员
+        <br>全栈web高级工程师</div>
+</body>
+
+</html>

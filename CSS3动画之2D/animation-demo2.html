@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+
+        .container{
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .progress-div{
+            width: 200px;
+            height: 30px;
+            border: 1px solid gray;
+            /*box-shadow: 0px 0px 10px 5px gray;*/
+        }
+
+        .progress-bar{
+            width: 0%;
+            height: 100%;
+            background-color: red;
+            animation: move-progress 3s linear 0s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes move-progress {
+            0%{width: 0%}
+            100%{ width:100%;}
+        }
+
+
+        .horizen-line{
+            display: inline-block;
+            width: 315px;
+            border: 1px solid red;
+        }
+
+        .half-circle{
+            display: inline-block;
+            width: 600px;
+            height: 300px;
+            border-radius: 300px 300px 0 0;
+            border: 2px solid red;
+            border-bottom: none;
+        }
+
+        .qiao{
+            position: relative;
+        }
+
+        .wheel-wrapper{
+            position: absolute;
+            left: 0;
+            bottom: 5px;
+            box-sizing: border-box;
+            width: 50px;
+            height: 50px;
+            animation: move-wrapper 13s linear 0s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes move-wrapper {
+             0%{left: 0}
+            30%{left: 265px}
+            100%{
+                transform-origin: 50px 50px;
+                transform: rotate(30deg);
+            }
+        }
+
+        .wheel{
+            box-sizing: border-box;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid red;
+            /*box-shadow: 0 0 1px 1px red;*/
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: move-wheel 3s linear 0s infinite;
+        }
+        @keyframes move-wheel {
+            0%{
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100%{
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="progress-div">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+</body>
+</html>

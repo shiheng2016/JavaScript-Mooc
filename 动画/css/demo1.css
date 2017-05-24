@@ -1,0 +1,80 @@
+﻿* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: #e89797;
+}
+
+.pic img {
+    width: 150px;
+    border: solid 4px #fff;
+    border-radius: 12px;
+    display: block;
+}
+
+.pic img{
+    position: absolute;
+}
+
+.pic1 img{
+    left: 80px;
+    top: 80px;
+    transform: rotate(40deg);
+}
+
+.pic2 img{
+    left: 120px;
+    top: 60px;
+    transform: rotate(20deg);
+}
+
+.pic3 img{
+    left: 150px;
+    top: 90px;
+    transform: rotate(-20deg);
+}
+
+.pic4 img{
+    left: 220px;
+    top: 120px;
+    transform: rotate(50deg);
+}
+
+.pic5 img{
+    left: 280px;
+    top: 90px;
+    transform: rotate(-23deg);
+}
+
+.pic6 img{
+    left: 380px;
+    top: 200px;
+    transform: rotate(-80deg);
+}
+
+.pic7 img{
+    left: 180px;
+    top: 190px;
+    transform: rotate(-53deg);
+}
+
+.pic8 img{
+    left: 130px;
+    top: 50px;
+    transform: rotate(53deg);
+}
+
+.pic9 img{
+    left: 280px;
+    top: 290px;
+    transform: rotate(60deg);
+}
+
+.pic img:hover {
+    transform: rotate(0deg) scale(1.5);
+    border: solid 4px #f00;
+    transition: all ease-in 1s;
+    z-index: 2;
+}

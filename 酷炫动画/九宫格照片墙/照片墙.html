@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>九宫格照片墙@石小墨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            width: 510px;
+            height: 510px;
+            margin: 50px auto;
+            border: 1px solid red;
+        }
+
+        li {
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+            float: left;
+            list-style: none;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        /*仅仅是测试*/
+        span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.5);
+            color: red;
+            font-size: 50px;
+            text-align: center;
+            line-height: 150px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><img src="cat/1.jpg"/></li>
+    <li><img src="cat/2.jpg"/></li>
+    <li><img src="cat/3.jpg"/></li>
+
+    <li><img src="cat/4.jpg"/></li>
+    <li><img src="cat/5.jpg"/></li>
+    <li><img src="cat/6.jpg"/></li>
+
+    <li><img src="cat/7.jpg"/></li>
+    <li><img src="cat/8.jpg"/></li>
+    <li><img src="cat/9.jpg"/></li>
+</ul>
+
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    var aLi = $('li');
+    var aPos = [];
+    aLi.each(function (index) {
+        aPos.push({
+            left: $(this).offset().left,
+            top: $(this).offset().top
+        });
+    });
+    aLi.each(function (index) {
+        $(this).css({
+            left: aPos[index].left + 'px',
+            top: aPos[index].top + 'px',
+            position: 'absolute',
+            margin: 0
+    });
+
+    $(document).click(function () {
+        aPos.sort(function () {
+            return Math.random() - 0.5;
+        })
+        aLi.each(function (index) {
+            $(this).stop().animate(aPos[index]);
+        });
+    });
+    });
+</script>
+</body>
+</html>

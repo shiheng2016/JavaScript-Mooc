@@ -1,0 +1,66 @@
+﻿body {
+    background-color: #000;
+}
+
+.ball-box {
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0px 0px -150px;
+    perspective:3000px;
+}
+
+.ball {
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: rotate3d 20s infinite linear;
+}
+
+@-webkit-keyframes rotate3d {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+.ball > div {
+    border: solid 2px #fff;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border-radius: 100%;
+}
+
+.line-1 {
+    transform: rotateY(0deg);
+}
+
+.line-2 {
+    transform: rotateY(36deg);
+}
+
+.line-3 {
+    transform: rotateY(72deg);
+}
+
+.line-4 {
+    transform: rotateY(108deg);
+}
+
+.line-5 {
+    transform: rotateY(144deg);
+}
+
+.ball::after {
+    content: "";
+    width: 1px;
+    height: 500px;
+    background-color: #ff0;
+    display: block;
+    transform: translateX(150px) translateY(-100px);
+}

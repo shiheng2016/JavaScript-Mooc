@@ -1,0 +1,29 @@
+﻿* {
+    padding: 0px;
+    margin: 0px;
+}
+
+#d1 {
+    position: absolute;
+    animation: donghua 4s infinite ease-in;
+}
+
+@keyframes donghua {
+    0% {
+        transform: translate(0,0);
+    }
+
+    20% {
+        transform: translate(100px,100px);
+    }
+
+    50% {
+        transform: translate(200px,150px);
+    }
+    80% {
+        transform: translate(400px,0px);
+    }
+    100% {
+        transform: translate(0px,0px);
+    }
+}

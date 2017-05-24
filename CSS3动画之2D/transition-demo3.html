@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input[type="checkbox"]{
+            display: none;
+        }
+
+        .menu-list{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 345px;
+            height: 40px;
+            /*border: 1px solid red;*/
+        }
+
+        .menu-item{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #a0a0a0;
+            font-size: 14px;
+            text-align: center;
+            line-height: 40px;
+            position: absolute;
+            right: 0;
+            top: 0;
+
+        }
+
+        .item-btn{
+            z-index: 10;
+        }
+        .item-btn::before{
+            content: '展开';
+        }
+
+        .item1{
+            transition: transform .5s ease-in-out 0s;
+        }
+        .item2{
+            transition: transform .5s ease-in-out .1s;
+        }
+        .item3{
+            transition: transform .5s ease-in-out .2s;
+        }
+        .item4{
+            transition: transform .5s ease-in-out .3s;
+        }
+        .item5{
+            transition: transform .5s ease-in-out .4s;
+        }
+
+        #showBtn:checked ~ .item-btn::before{
+            content: '收起';
+        }
+        #showBtn:checked ~ .item1{
+            transform: translate(-200px,0);
+        }
+
+        #showBtn:checked ~ .item2{
+            transform: translate(-150px,0);
+        }
+
+        #showBtn:checked ~ .item3{
+            transform: translate(-100px,0);
+        }
+
+        #showBtn:checked ~ .item4{
+            transform: translate(-50px,0);
+        }
+        
+     
+
+    </style>
+</head>
+<body>
+    <div class="menu-list">
+        <input type="checkbox" id="showBtn">
+        <label class="menu-item item-btn" for="showBtn"></label>
+        <div class="menu-item item1">算法</div>
+        <div class="menu-item item2">java</div>
+        <div class="menu-item item3">前端</div>
+        <div class="menu-item item4">安卓</div>
+    </div>
+</body>
+</html>

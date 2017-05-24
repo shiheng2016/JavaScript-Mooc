@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>九宫格照片墙@石小墨</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            width: 510px;
+            height: 510px;
+            margin: 50px auto;
+            border: 1px solid #ccc;
+        }
+
+        li{
+            position: relative;
+            float: left;
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+            background-color: #ccc;
+            list-style:none;
+            font-size: 30px;
+        }
+
+        li img{
+            width: 100%;
+            height:100%;
+        }
+
+        .active{
+            border:5px dashed red; box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+<ul>
+    <li><img src="cat/1.jpg" alt=""></li>
+    <li><img src="cat/2.jpg" alt=""></li>
+    <li><img src="cat/3.jpg" alt=""></li>
+    <li><img src="cat/4.jpg" alt=""></li>
+    <li><img src="cat/5.jpg" alt=""></li>
+    <li><img src="cat/6.jpg" alt=""></li>
+    <li><img src="cat/7.jpg" alt=""></li>
+    <li><img src="cat/8.jpg" alt=""></li>
+    <li><img src="cat/9.jpg" alt=""></li>
+</ul>
+
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="jquery.easing.1.3.js"></script>
+<script>
+    var $aLi = $('li');
+    //布局转换
+    var aPos = [];
+    $aLi.each(function (index) {
+        aPos.push({
+            left:$(this).offset().left,
+            top:$(this).offset().top
+        });
+    });
+
+    $aLi.each(function (index) {
+        $(this).css({
+            position:'absolute',
+            left:aPos[index].left,
+            top:aPos[index].top,
+            margin:0
+        });
+    });
+
+    //拖拽
+    $aLi.each(function () {
+        drag($(this));
+    });
+
+    var zIndex = 1;
+    function drag(obj) {
+        obj.mousedown(function (ev) {
+            var $oNear = null;
+            var disX = ev.clientX - obj.offset().left;
+            var disY = ev.clientY - obj.offset().top;
+            zIndex++;
+            obj.css('z-index',zIndex);
+
+            $(document).mousemove(move);
+            $(document).mouseup(up);
+
+            function move(ev) {
+                var left = ev.clientX - disX;
+                var top = ev.clientY- disY;
+                obj.css({
+                    left:left+'px',
+                    top:top+'px'
+                });
+                //找最近
+                $oNear = findNear(obj);
+                $aLi.removeClass('active');
+                if($oNear){
+                    $oNear.addClass('active');
+                }
+            }
+
+            function up() {
+                $(document).off('mousemove',move);
+                $(document).off('mouseup',up);
+
+                if($oNear){
+                    var left1 = aPos[$oNear.index()].left;
+                    var top1 = aPos[$oNear.index()].top;
+                    var left2 = aPos[obj.index()].left;
+                    var top2 = aPos[obj.index()].top;
+
+                    obj.stop().animate({
+                        left:left1+'px',
+                        top:top1+'px'
+                    });
+                    $oNear.stop().animate({
+                        left:left2+'px',
+                        top:top2+'px'
+                    });
+
+                    aPos[obj.index()].left = left1;
+                    aPos[obj.index()].top = top1;
+                    aPos[$oNear.index()].left = left2;
+                    aPos[$oNear.index()].top = top2;
+
+                    $aLi.removeClass('active');
+                }else{
+                    var left = aPos[obj.index()].left;
+                    var top = aPos[obj.index()].top;
+                    obj.stop().animate({
+                        left:left+'px',
+                        top:top+'px'
+                    },{
+                        duration:100
+                    })
+                }
+            }
+            return false;
+        });
+
+
+
+        function findNear(obj) {
+            var nMin = 99999;
+            var $oNear = null;
+            $aLi.each(function () {
+                if(this!=obj[0]){
+                    if(bundTest($(this),obj)){
+                        var nTmpMin = getDis($(this),obj);
+                        if(nTmpMin < nMin){
+                            nMin = nTmpMin;
+                            $oNear = $(this);
+                        }
+                    }
+                }
+            });
+            return $oNear;
+        }
+
+        function getDis(obj1,obj2) {
+            var t1 = obj1.offset().top+obj1.height()/2;
+            var t2 = obj2.offset().top+obj2.height()/2;
+            var l1 = obj1.offset().left+obj1.width()/2;
+            var l2 = obj2.offset().left+obj2.width()/2;
+            var a = t1-t2;
+            var b= l1-l2;
+
+            return Math.sqrt(a*a+b*b);
+        }
+
+        function bundTest(obj1,obj2) {
+            var l1 = obj1.offset().left;
+            var t1 = obj1.offset().top;
+            var r1 = l1 + obj1.outerWidth();
+            var b1 = t1 + obj1.outerHeight();
+
+            var l2 = obj2.offset().left;
+            var t2 = obj2.offset().top;
+            var r2 = l2 + obj2.outerWidth();
+            var b2 = t2 + obj2.outerHeight();
+
+            if(l1>r2 || r1<l2 || b1<t2 || t1>b2){
+                return false;
+                console.log('false');
+            }else {
+                console.log('true');
+                return true;
+            }
+        }
+
+    }
+</script>
+</body>
+</html>

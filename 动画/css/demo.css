@@ -1,0 +1,24 @@
+﻿#d1 {
+    width: 150px;
+    height: 150px;
+    border: solid 2px red;
+    background-color: #4cff00;
+    position: absolute;
+    top: 150px;
+    left: 150px;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+/*  -webkit-transform:rotate(30deg) scale(1.5);
+    -o-transform:rotate(30deg) scale(1.5);
+    -moz-transform:rotate(30deg) scale(1.5);
+    -ms-transform:rotate(30deg) scale(1.5);*/
+#d1:hover {
+    transform: rotate(30deg) scale(1.5);
+    background-color: #808080;
+    border: solid 5px #9110ca;
+    transition: all ease-in 1s;
+}
